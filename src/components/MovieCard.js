@@ -1,13 +1,14 @@
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function MovieCard({title}) {
-  
+function MovieListItem({ movie }) {
   return (
-    <article>
-        <h2>{title}</h2>
-        {/* What should go here? */}
-    </article>
+    <li>
+      <Link to={`/movie/${movie.id}`}>
+        {movie.title}
+      </Link>
+    </li>
   );
-};
+}
 
-export default MovieCard;
+export default MovieListItem;

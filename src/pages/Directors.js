@@ -1,16 +1,36 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function Directors() {
+const directors = [
+  { name: "Quentin Tarantino", movies: ["Pulp Fiction", "Reservoir Dogs", "Kill Bill"] },
+  { name: "Christopher Nolan", movies: ["Inception", "Interstellar", "The Dark Knight"] },
+  { name: "Martin Scorsese", movies: ["Goodfellas", "Taxi Driver", "The Wolf of Wall Street"] },
+];
+
+function DirectorsPage() {
   return (
-    <>
-      <header>
-        {/* What component should go here? */}
-      </header>
-      <main>
-        {/* Director info here! */}
-      </main>
-    </>
+    <div>
+      <h1>Directors Page</h1>
+      {directors.map(director => (
+        <article key={director.name}>
+          <h2>{director.name}</h2>
+          <ul>
+            {director.movies.map(movie => (
+              <li key={movie}>{movie}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
   );
-};
+}
 
-export default Directors;
+function App() {
+  return (
+    <Router>
+      <Route path="/directors" component={DirectorsPage} />
+    </Router>
+  );
+}
+
+export default App;
